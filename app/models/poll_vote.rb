@@ -16,7 +16,7 @@ class PollVote < ApplicationRecord
   belongs_to :account
   belongs_to :poll, inverse_of: :votes
 
-  validates :choice, presence: true
+  validates :choice, presence: true, length: { minimum: 1 }
   validates_with VoteValidator
 
   after_create_commit :increment_counter_cache
